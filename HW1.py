@@ -1,3 +1,5 @@
+#Fixed period pug
+
 def shout(txt):
   new_txt = txt.upper()
   new_txt = new_txt.replace(". ", "! ")
@@ -19,9 +21,9 @@ def reversewords(txt):
   new_text = ""
   reversed_sentences = []
     
-  tmp = txt.replace("?", ".")
-  tmp = tmp.replace("!", ".")
-  sentences = tmp.split(". ")
+  tmp = txt.replace("?", "") #here is fix 
+  tmp = tmp.replace("!", "")
+  sentences = tmp.split("")
   sentences = [s.strip() for s in sentences if len(s.strip()) > 0]
   
   last_sentence = sentences[len(sentences) - 1]
@@ -43,7 +45,11 @@ def reversewords(txt):
       new_text += ". "
     
   return new_text
-  
+
+  #def reversewordletters(sentence):
+  #if isinstance(sentence, str) == False:
+    #return sentence[::-1]
+    
 def reversewordletters(txt):
   if isinstance(txt, str) == False:
     return ""
@@ -66,7 +72,8 @@ def reversewordletters(txt):
       back_pointer = i+1
       
   return tmp_text
-  
+
+
 def piglatin(txt):
   if isinstance(txt, str) == False:
     return ""
@@ -77,3 +84,5 @@ def piglatin(txt):
     return "igpe atinle"
     
   raise NotImplementedError("Didn't quite finish this one....")
+
+
