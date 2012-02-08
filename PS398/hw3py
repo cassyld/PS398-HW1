@@ -1,0 +1,55 @@
+import time
+import math
+import csv
+import random
+
+n = 1000
+list = []
+selSort_times = []
+quickSort_times = []
+
+
+#First up: Selection_sort. The internet tells me that it is simple. 
+# it is basically putting a deck of cards back in order. Just keep
+# looking for the smallest value and order based on this. The logic
+# is like that of a loop. Each time we go through it we select the smallest
+# of the remaining elements and move it into its proper position.
+
+def selection_sort(list):
+    start= time.clock()
+    for i in range(0, len (list)):
+        min = i
+            for j in range (i + 1, len(list2):
+                if list[j] < list[min]:
+                    min =j
+    list[i], list[min] = list[min], list[i]
+    end= time.clock()
+    selSort_times.append(end_start)
+
+
+def bubble_sort(list2):
+    #switch_test = False
+    start= time.clock()
+    for i in range(0, len(list2) - 1):
+        # as suggested by kubrick, makes sense
+        switch_test = False
+        for j in range(0, len(list2) - i - 1):
+            if list2[j] > list2[j + 1]:
+                list2[j], list2[j + 1] = list2[j + 1], list2[j]  
+            switch_test = True
+        if switch_test == False:
+            break
+     end= time.clock()
+     bubble_times.append(end_start)
+
+
+     
+
+#Write these times to a csv names times.csv where each time gets its own column
+csvWriter = csv.writer(open('times.csv', 'wb'))
+
+for i in range(0,len(times1)):
+  csvWriter.writerow([times1[i], times2[i]])
+
+
+ 
