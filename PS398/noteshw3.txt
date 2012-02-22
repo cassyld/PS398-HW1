@@ -1,0 +1,84 @@
+PYTHON COMMON DATA STRUCTURES () {} [] 
+
+() tuple 
+a = (1,2) so a will be 1,2 forever
+[] = list 
+
+    a = []
+    a [o] = "foo"
+    a[i]  = "bar"
+
+{} # a dictionary
+
+b = [1,2,3] # 1 has the 0 spot, etc. sequential 
+
+a = {}      # allows you to identify things arbitrarily 
+a ["foo"] = "bar" 
+a = {"foo" : "bar:"} 
+
+MATTS HW REVIEW
+two packages
+import random
+import ystockquote
+
+creates the portfolio as a class 
+    makes an empty string that is transactions, these get printed when you do history  
+    string action is what will create the history 
+       if len(self.stockBlance) > i : # this says if length is blah then you add a \n #new line
+
+
+
+MATIAS HW REVIEW
+as soon as you create a stock is calculates a selling price 
+the buy price thing is initially he thought he would make a table of how much money you make,.. but he didn't. so unncessary 
+
+Stock class
+he generates a sell price upon creation of a stock but you should probs calculate it at the time of sell 
+
+buy stock 
+checks that it is an integer, that you can afford to buy it, that you already own these stocks, if so they just get aded in the dictionary. 
+
+self.stock.has_key(stock.name) == True: 
+
+sellstock
+checks first again integer or not. it also checks for whether it is already in the dictionary then whether you still have some. keeps the key but assigns a 0. 
+
+datetime is a package. 
+
+JOSH
+When he bought a stock he used the instance of the stock as the key
+
+s1 = Stock(3.2, "bar")
+stocks = {s1 : 5} 
+
+ERROR MESSAGES
+
+All use inheritance 
+
+alogrithms 
+
+b o notations for any given x and any function of x, x is said to be in the complexity class of f(x)
+
+selection sort #looking up sorting alogrithms online
+
+k=0 , L = []
+loop through n-k
+    find smallest number at j #find smallest element and put it in the first spot
+    swap L [k] with [j]
+    k + =1
+
+    [5 , 1 , 15, 7, 111] 
+
+rd1: k = 0, j =1 [ 1, 5, 15, 7, 111]
+     k = 1, j =1 [ 1, 5, 15, 7, 111]
+     k = 2, j = 3 [ 1, 5, 15, 7, 111]
+     k = 3, j =3 
+
+
+     HW:
+     implement two functions
+     different complexity classes (merge sort, bubble sort, look them up!)
+    The idea is that you will generate an array of numbers, sort them, time how long it takes, and you will graph that. 
+    the idea is that if your horizontal axis x you will see how things grow. log (n) more linear. You will see how things diverge. 
+     
+

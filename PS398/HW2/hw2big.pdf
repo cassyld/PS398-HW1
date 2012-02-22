@@ -1,0 +1,57 @@
+
+class portfolio(object):      # class X(Y) says that X is a Y
+      
+      def __init__(self):     #the portfolio has these things
+            self.cash = 0
+            self.stocks = ()
+            self.mf = ()
+
+      def addCash(n):       #and this tells one of those things what to do
+            self.cash = +n
+
+      def buyMutualFund():
+            self.MutualFund 
+            
+class MutualFund():
+      def __init__(self, price, symbol):
+            self.price = 0
+            self.symbol = ()
+
+      def  buyMutualFund(n)
+           self.
+      
+
+      def 
+      
+      
+
+class Stock():
+      def __init__(self, price, symbol)
+      
+      def self.price = price 
+                
+      def self.symbol = symbol
+      return "s= stock(price, symbol)"
+
+class sellStock(Stock):
+      
+      def sellStock = add(Cash + price)
+
+class buyStock(Stock):
+      def  buyStock =subtract(Cash-price)
+
+class MutualFunds(Cash, price, symbol):
+      def self.price = price
+      def self.symbol = symbol
+      return "s= stock(price, symbol)"
+
+class sellMutualFund(MutualFunds):
+      def sell
+
+class withdrawCash
+
+class history
+
+      
+portfolio=Portfolio(Cash, Stock, Mutual Funds)
+

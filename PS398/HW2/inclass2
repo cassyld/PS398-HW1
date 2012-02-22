@@ -1,0 +1,6 @@
+class Athlete(object): 
+    def __init__(self, name, height, weight, number): #self is always the first paramater for an obj
+    self.name = name
+    self.weight = weight
+    self.number = number 
+    

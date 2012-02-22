@@ -1,0 +1,155 @@
+import random
+
+class Portfolio(object):
+  
+  def __init__(self):
+    self.cash = 0
+    self.stocks = {}
+    self.mutual_funds = {}
+    self.transactions = []
+    
+  def addCash(self, cash_to_add):
+    if cash_to_add > 0:
+      self.cash += cash_to_add
+      self.transactions.append("Added Cash: $" +str(cash_to_add))
+  
+  def withdrawCash(self, cash_to_remove):
+    if cash_to_remove > 0 and cash_to_remove <= self.cash:
+      self.cash -= cash_to_remove
+      self.transactions.append("Withdrew Cash: $" + str(cash_to_remove))
+      return True
+    else:
+      return False
+      
+  def buyStock(self, shares, stock):
+    if isinstance(stock, Stock) and shares > 0 and shares%1 == 0:
+      if shares*stock.price <= self.cash:
+        if stock in self.stocks.keys():
+          self.stocks[stock] += shares
+        else:
+          self.stocks[stock] = shares
+          
+        self.cash -= shares*stock.price
+        self.transactions.append("Bought Stock: " + str(shares) + " shares of " + stock.name + " at $" + str(stock.price) + "/share")
+      else:
+       raise Exception, "Not enough money to buy stock"
+    else:
+      raise Exception, "Improper buyStock command"
+      
+  def sellMutualFund(self, fund_name, shares):
+    if shares >= 0:
+      for mf in self.mutual_funds:
+        if mf.name == fund_name:
+          if self.mutual_funds[mf] >= shares:
+            sell_price = mf.sell_price()
+            self.cash += sell_price*shares
+            self.mutual_funds[mf] -= shares
+            self.transactions.append("Sold MF: " + str(shares) + " shares of " + mf.name + " at $" + str("%.2f" % sell_price) + "/share")
+          else:
+            return False
+    
+    return False
+    
+  def sellStock(self, stock_name, shares):
+    if shares >= 0 and shares%1 == 0:
+      for s in self.stocks:
+        if s.name == stock_name:
+          if self.stocks[s] >= shares:
+            sell_price = s.sell_price()
+            self.cash += sell_price*shares
+            self.stocks[s] -= shares
+            self.transactions.append("Sold Stock: " + str(shares) + " shares of " + s.name + " at $" + ("%.2f" % sell_price) + "/share")
+          else:
+            return False
+
+    return False   
+      
+  def buyMutualFund(self, shares, mf):
+     if isinstance(mf, MutualFund) and shares > 0:
+       if shares*mf.price <= self.cash:
+         if mf in self.mutual_funds.keys():
+           self.mutual_funds[mf] += shares
+         else:
+           self.mutual_funds[mf] = shares
+        
+         self.cash -= shares*mf.price
+         self.transactions.append("Bought MF: " + str(shares) + " shares of " + mf.name + " at $" + str(mf.price) + "/share")
+       else:
+        raise Exception, "Not enough money to buy MF"
+     else:
+       raise Exception, "Improper buyMutualFund command"
+       
+  def __str__(self):
+    output =  'cash:         $' + ("%.2f" % self.cash) + "\n"
+    
+    output += 'stocks:       '
+    need_spacer = False
+    spacer =  "              "
+    if len(self.stocks) == 0:
+      output += "none \n"
+    else:
+      for s in self.stocks.keys():
+        if need_spacer:
+          output += spacer
+        output += str(self.stocks[s]) + " " + s.name + "\n"
+        need_spacer = True
+        
+    output += 'mutual funds: '
+    need_spacer = False
+    spacer =  "              "
+    if len(self.mutual_funds) == 0:
+      output += "none \n"
+    else:
+      for mf in self.mutual_funds.keys():
+        if need_spacer:
+          output += spacer
+        output += str(self.mutual_funds[mf]) + " " + mf.name + "\n"
+        need_spacer = True
+        
+    return output
+    
+  def history(self):
+    print("\n".join(self.transactions))
+      
+class InvestmentType:
+  def __init__(self, price, name):
+    if price > 0 and name:
+      self.price = price
+      self.name = name
+    else:
+      raise Exception, "Investment not properly specified"
+      
+  def sell_price(self):
+    pass
+
+class Stock(InvestmentType):
+  
+  def sell_price(self):
+    return random.uniform(.5, 1.5)*self.price
+  
+class MutualFund(InvestmentType):
+  
+  def __init__(self, name):
+    if name:
+      self.price = 1
+      self.name = name
+    else:
+      raise Exception, "Mutual Fund not properly specified"
+  
+  def sell_price(self):
+    return random.uniform(0.9, 1.2)
+  
+      
+p = Portfolio()
+p.addCash(300.50)
+s = Stock(20, "HFH")
+p.buyStock(5, s)
+mf1 = MutualFund("BRT")
+mf2 = MutualFund("GHT")
+p.buyMutualFund(10.3, mf1)
+p.buyMutualFund(2, mf2)
+print(p)
+p.sellMutualFund("BRT", 3)
+p.sellStock("HFH", 1)
+p.withdrawCash(50)
+p.history()

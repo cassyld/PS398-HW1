@@ -1,0 +1,32 @@
+PYTHON COMMON DATA STRUCTURES () {} [] 
+
+() tuple 
+a = (1,2) so a will be 1,2 forever
+[] = list 
+
+    a = []
+    a [o] = "foo"
+    a[i]  = "bar"
+
+{} # a dictionary
+
+b = [1,2,3] # 1 has the 0 spot, etc. sequential 
+
+a = {}      # allows you to identify things arbitrarily 
+a ["foo"] = "bar" 
+a = {"foo" : "bar:"} 
+
+MATTS HW
+two packages
+import random
+import ystockquote
+
+creates the portfolio as a class 
+    makes an empty string that is transactions, these get printed when you do history  
+    string action is what will create the history 
+       if len(self.stockBlance) > i : # this says if length is blah then you add a \n #new line
+
+
+
+
+
